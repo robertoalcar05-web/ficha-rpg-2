@@ -1,3 +1,5 @@
+@import url("https://fonts.cdnfonts.com/css/ds-digital");
+
 * {
   margin: 0;
   padding: 0;
@@ -7,4 +9,23 @@
 body {
   background: #e5e5e5;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+input,
+textarea,
+select,
+button,
+input::placeholder,
+textarea::placeholder {
+  font-family: "DS-Digital", "Courier New", monospace;
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+
+.sheet input,
+.sheet textarea,
+.sheet select,
+.sheet button {
+  font-family: "DS-Digital", "Courier New", monospace !important;
+  font-variant-numeric: tabular-nums;
 }

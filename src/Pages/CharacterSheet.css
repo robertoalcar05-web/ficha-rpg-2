@@ -21,6 +21,57 @@
   gap: 15px;
 }
 
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.sheet-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.sheet-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sheet-field-wide {
+  grid-column: 1 / -1;
+}
+
+.sheet-field label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sheet-field input,
+.sheet-field textarea {
+  width: 100%;
+  border: 2px solid #111;
+  background: #fff;
+  padding: 8px 10px;
+  font: inherit;
+  box-sizing: border-box;
+  color: #111;
+}
+
+.sheet-field textarea {
+  min-height: 78px;
+  resize: vertical;
+}
+
+.sheet-field input:focus,
+.sheet-field textarea:focus {
+  outline: none;
+  border-color: #0f6bff;
+}
+
 .header {
   grid-area: header;
 }

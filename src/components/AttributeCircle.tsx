@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "./AttributeCircle.css";
 
 type Props = {
@@ -5,15 +6,52 @@ type Props = {
 };
 
 export default function AttributeCircle({ name }: Props) {
+  const [value, setValue] = useState("");
+
+  const handleValueChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const nextValue = event.target.value;
+
+    if (nextValue === "") {
+      setValue("");
+      return;
+    }
+
+    if (nextValue.length > 3) {
+      return;
+    }
+
+    const numericValue = Number(nextValue);
+
+    if (!Number.isNaN(numericValue) && numericValue <= 100) {
+      setValue(nextValue);
+    }
+  };
+
   return (
     <div className="attribute">
-      <span className="attribute-name">
-        {name}
-      </span>
+      <span className="attribute-name">{name}</span>
 
       <div className="attribute-circle">
-        <div className="attribute-inner" />
-        <div className="attribute-modifier" />
+        <div className="attribute-inner">
+          <input
+            type="number"
+            className="attribute-value"
+            aria-label={`${name} value`}
+            placeholder="0"
+            min="0"
+            max="100"
+            value={value}
+            onChange={handleValueChange}
+          />
+        </div>
+        <input
+          type="number"
+          className="attribute-modifier"
+          aria-label={`${name} modifier`}
+          placeholder="+0"
+          min="-10"
+          max="10"
+        />
       </div>
     </div>
   );
