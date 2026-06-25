@@ -1,55 +1,72 @@
 .attribute {
+  --circle-size: clamp(76px, 20vw, 92px);
+  --modifier-size: 34px;
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 25px;
+  gap: 10px;
+  width: 100%;
+  padding: 4px 2px 8px;
 }
 
 .attribute-name {
-  font-weight: bold;
-  font-size: 0.75rem;
-  margin-bottom: 8px;
+  font-size: clamp(0.62rem, 2.4vw, 0.74rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  text-align: center;
+  color: #222;
+  line-height: 1.2;
+  max-width: 100%;
 }
 
 .attribute-circle {
-  width: 80px;
-  height: 80px;
+  width: var(--circle-size);
+  height: var(--circle-size);
   border-radius: 50%;
-  border: 6px solid black;
+  border: 3px solid #111;
+  background: linear-gradient(160deg, #ffffff 0%, #ececec 55%, #d9d9d9 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 3px 10px rgba(0, 0, 0, 0.1);
 
   display: flex;
   align-items: center;
   justify-content: center;
-
   position: relative;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.attribute-circle:focus-within {
+  border-color: #0f6bff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    0 0 0 3px rgba(15, 107, 255, 0.18),
+    0 4px 12px rgba(15, 107, 255, 0.15);
 }
 
 .attribute-inner {
-  width: 55px;
-  height: 55px;
-
+  width: calc(var(--circle-size) * 0.68);
+  height: calc(var(--circle-size) * 0.68);
   border-radius: 50%;
-  border: 2px solid black;
+  border: 1px solid rgba(17, 17, 17, 0.22);
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.06);
 
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #f9f9f9;
 }
 
 .attribute-value,
 .attribute-modifier {
-  width: 100%;
   border: none;
   background: transparent;
   text-align: center;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1rem;
   font-weight: 700;
-  color: #0b0b0b;
-  letter-spacing: 1px;
-  text-shadow: 0 0 2px rgba(0, 0, 0, 0.15);
+  color: #111;
+  letter-spacing: 0.04em;
   padding: 0;
 }
 
@@ -57,23 +74,59 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+  font-size: clamp(1.15rem, 4.2vw, 1.45rem);
+  line-height: 1;
+}
+
+.attribute-value::placeholder {
+  color: rgba(17, 17, 17, 0.28);
+}
+
+.attribute-modifier-wrap {
+  position: absolute;
+  right: calc(var(--modifier-size) * -0.38);
+  bottom: calc(var(--modifier-size) * -0.22);
+  width: calc(var(--modifier-size) + 12px);
+  height: calc(var(--modifier-size) + 12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .attribute-modifier {
-  width: 24px;
-  height: 24px;
-  border: 3px solid black;
-  background: white;
-  position: absolute;
-  right: -12px;
-  bottom: -5px;
-  border-radius: 4px;
-  font-size: 0.72rem;
+  width: var(--modifier-size);
+  height: var(--modifier-size);
+  border: 2px solid #111;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.12);
+  font-size: clamp(0.72rem, 2.8vw, 0.82rem);
+  line-height: 1;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 6px) 0,
+    100% 6px,
+    100% 100%,
+    6px 100%,
+    0 calc(100% - 6px)
+  );
+}
+
+.attribute-modifier::placeholder {
+  color: rgba(17, 17, 17, 0.35);
 }
 
 .attribute-value:focus,
 .attribute-modifier:focus {
   outline: none;
+}
+
+.attribute-value:focus-visible,
+.attribute-modifier:focus-visible {
+  outline: 2px solid #0f6bff;
+  outline-offset: 1px;
 }
 
 .attribute-value::-webkit-outer-spin-button,
@@ -87,4 +140,30 @@
 .attribute-value[type="number"],
 .attribute-modifier[type="number"] {
   -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+@media (max-width: 768px) {
+  .attribute {
+    --circle-size: clamp(84px, 26vw, 96px);
+    --modifier-size: 40px;
+    gap: 8px;
+    padding: 6px 0 10px;
+  }
+
+  .attribute-name {
+    letter-spacing: 0.08em;
+  }
+
+  .attribute-modifier-wrap {
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 480px) {
+  .attribute {
+    --circle-size: min(88px, 40vw);
+    --modifier-size: 42px;
+  }
 }

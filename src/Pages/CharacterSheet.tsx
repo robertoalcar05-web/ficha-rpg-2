@@ -1,6 +1,7 @@
 import "./CharacterSheet.css";
 import SheetBox from "../components/SheetBox";
 import AttributeCircle from "../components/AttributeCircle";
+import NumericInput from "../components/NumericInput";
 
 export default function CharacterSheet() {
   return (
@@ -59,19 +60,19 @@ export default function CharacterSheet() {
           <div className="sheet-form-grid">
             <div className="sheet-field">
               <label htmlFor="combat-hp">HP</label>
-              <input id="combat-hp" placeholder="Pontos de vida" type="number" inputMode="numeric" maxLength={3} min="0" max="999" />
+              <NumericInput id="combat-hp" placeholder="Pontos de vida" />
             </div>
             <div className="sheet-field">
               <label htmlFor="combat-ac">AC</label>
-              <input id="combat-ac" placeholder="Classe de armadura" type="number" inputMode="numeric" maxLength={3} min="0" max="999" />
+              <NumericInput id="combat-ac" placeholder="Classe de armadura" />
             </div>
             <div className="sheet-field">
               <label htmlFor="combat-initiative">Initiative</label>
-              <input id="combat-initiative" placeholder="Iniciativa" type="number" inputMode="numeric" maxLength={3} min="0" max="999" />
+              <NumericInput id="combat-initiative" placeholder="Iniciativa" />
             </div>
             <div className="sheet-field">
               <label htmlFor="combat-speed">Speed</label>
-              <input id="combat-speed" placeholder="Velocidade" type="number" inputMode="numeric" maxLength={3} min="0" max="999" />
+              <NumericInput id="combat-speed" placeholder="Velocidade" />
             </div>
             <div className="sheet-field sheet-field-wide">
               <label htmlFor="combat-weapons">Weapons & Attacks</label>
