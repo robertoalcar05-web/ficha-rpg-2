@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./AttributeCircle.css";
+import styles from "./AttributeCircle.module.css";
 
 type Props = {
   name: string;
@@ -48,14 +48,14 @@ export default function AttributeCircle({ name }: Props) {
   };
 
   return (
-    <div className="attribute">
-      <span className="attribute-name">{name}</span>
+    <div className={styles.attribute}>
+      <span className={styles.attributeName}>{name}</span>
 
-      <div className="attribute-circle" role="group" aria-label={name}>
-        <div className="attribute-inner">
+      <div className={styles.attributeCircle} role="group" aria-label={name}>
+        <div className={styles.attributeInner}>
           <input
             type="number"
-            className="attribute-value"
+            className={styles.attributeValue}
             aria-label={`${name} value`}
             placeholder="0"
             inputMode="numeric"
@@ -65,10 +65,10 @@ export default function AttributeCircle({ name }: Props) {
             onChange={handleValueChange}
           />
         </div>
-        <div className="attribute-modifier-wrap">
+        <div className={styles.attributeModifierWrap}>
           <input
             type="number"
-            className="attribute-modifier"
+            className={styles.attributeModifier}
             aria-label={`${name} modifier`}
             placeholder="+0"
             inputMode="numeric"

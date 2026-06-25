@@ -1,16 +1,17 @@
-import "./SheetBox.css";
+import styles from "./SheetBox.module.css";
 
 type Props = {
   title: string;
   children?: React.ReactNode;
+  className?: string;
 };
 
-export default function SheetBox({ title, children }: Props) {
+export default function SheetBox({ title, children, className }: Props) {
   return (
-    <section className="sheet-box">
+    <section className={[styles.box, className].filter(Boolean).join(" ")}>
       <h3>{title}</h3>
 
-      <div className="sheet-content">
+      <div className={styles.content}>
         {children}
       </div>
     </section>

@@ -1,16 +1,20 @@
+/* GLOBAL: fonte externa DS-Digital — usada em inputs da ficha */
 @import url("https://fonts.cdnfonts.com/css/ds-digital");
 
+/* GLOBAL: reset — afeta todo o documento */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* GLOBAL: tipografia base da aplicação */
 body {
   background: #e5e5e5;
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* GLOBAL: tipografia monospace padrão em controles de formulário */
 input,
 textarea,
 select,
@@ -22,6 +26,7 @@ textarea::placeholder {
   letter-spacing: 1px;
 }
 
+/* GLOBAL: hook .sheet — CharacterSheet renderiza <main class="sheet"> */
 .sheet input,
 .sheet textarea,
 .sheet select,

@@ -1,127 +1,114 @@
-import "./CharacterSheet.css";
-import SheetBox from "../components/SheetBox";
-import AttributeCircle from "../components/AttributeCircle";
-import NumericInput from "../components/NumericInput";
-
-export default function CharacterSheet() {
-  return (
-    <main className="sheet">
-      <div className="header">
-        <SheetBox title="Citizen License">
-          <div className="license-header">
-            <h1>NIGHT CITY</h1>
-            <h2>CITIZEN LICENSE</h2>
-          </div>
-        </SheetBox>
-      </div>
-
-      <div className="attributes">
-        <SheetBox title="Attributes">
-          <div className="attributes-grid">
-            <AttributeCircle name="Strength" />
-            <AttributeCircle name="Dexterity" />
-            <AttributeCircle name="Constitution" />
-            <AttributeCircle name="Intelligence" />
-            <AttributeCircle name="Wisdom" />
-            <AttributeCircle name="Charisma" />
-          </div>
-        </SheetBox>
-      </div>
-
-      <div className="info">
-        <SheetBox title="Character Info">
-          <div className="sheet-form-grid">
-            <div className="sheet-field">
-              <label htmlFor="character-name">Name</label>
-              <input id="character-name" placeholder="Nome do personagem" maxLength={30} />
-            </div>
-            <div className="sheet-field">
-              <label htmlFor="character-class">Class</label>
-              <input id="character-class" placeholder="Classe" maxLength={30} />
-            </div>
-            <div className="sheet-field">
-              <label htmlFor="character-age">Age</label>
-              <input id="character-age" placeholder="Idade" maxLength={30} />
-            </div>
-            <div className="sheet-field">
-              <label htmlFor="character-race">Race</label>
-              <input id="character-race" placeholder="Raça" maxLength={30} />
-            </div>
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="character-background">Background</label>
-              <textarea id="character-background" placeholder="Descreva sua história" maxLength={30} />
-            </div>
-          </div>
-        </SheetBox>
-      </div>
-
-      <div className="combat">
-        <SheetBox title="Combat">
-          <div className="sheet-form-grid">
-            <div className="sheet-field">
-              <label htmlFor="combat-hp">HP</label>
-              <NumericInput id="combat-hp" placeholder="Pontos de vida" />
-            </div>
-            <div className="sheet-field">
-              <label htmlFor="combat-ac">AC</label>
-              <NumericInput id="combat-ac" placeholder="Classe de armadura" />
-            </div>
-            <div className="sheet-field">
-              <label htmlFor="combat-initiative">Initiative</label>
-              <NumericInput id="combat-initiative" placeholder="Iniciativa" />
-            </div>
-            <div className="sheet-field">
-              <label htmlFor="combat-speed">Speed</label>
-              <NumericInput id="combat-speed" placeholder="Velocidade" />
-            </div>
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="combat-weapons">Weapons & Attacks</label>
-              <textarea id="combat-weapons" placeholder="Liste armas e ataques" maxLength={30} />
-            </div>
-          </div>
-        </SheetBox>
-      </div>
-
-      <div className="personality">
-        <SheetBox title="Personality">
-          <div className="sheet-form-grid">
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="personality-traits">Traits</label>
-              <textarea id="personality-traits" placeholder="Traços de personalidade" maxLength={30} />
-            </div>
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="personality-ideals">Ideals</label>
-              <textarea id="personality-ideals" placeholder="Ideais" maxLength={30} />
-            </div>
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="personality-bonds">Bonds</label>
-              <textarea id="personality-bonds" placeholder="Vínculos" maxLength={30} />
-            </div>
-          </div>
-        </SheetBox>
-      </div>
-
-      <div className="skills">
-        <SheetBox title="Skills">
-          <div className="sheet-form-grid">
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="skills-list">Skills & Proficiencies</label>
-              <textarea id="skills-list" placeholder="Liste suas habilidades" maxLength={30} />
-            </div>
-          </div>
-        </SheetBox>
-      </div>
-
-      <div className="features">
-        <SheetBox title="Features & Traits">
-          <div className="sheet-form-grid">
-            <div className="sheet-field sheet-field-wide">
-              <label htmlFor="features-notes">Features</label>
-              <textarea id="features-notes" placeholder="Anote características especiais" maxLength={30} />
-            </div>
-          </div>
-        </SheetBox>
-      </div>
-    </main>
-  );
-}
+import styles from "./CharacterSheet.module.css";
+import SheetBox from "../components/SheetBox";
+import AttributeCircle from "../components/AttributeCircle";
+import NumericInput from "../components/NumericInput";
+import SheetFormGrid from "../components/SheetFormGrid";
+import SheetField from "../components/SheetField";
+
+export default function CharacterSheet() {
+  return (
+    <main className={`${styles.sheet} sheet`}>
+      <div className={styles.header}>
+        <SheetBox title="Citizen License" className={styles.headerBox}>
+          <div className={styles.licenseHeader}>
+            <h1>NIGHT CITY</h1>
+            <h2>CITIZEN LICENSE</h2>
+          </div>
+        </SheetBox>
+      </div>
+
+      <div className={styles.attributes}>
+        <SheetBox title="Attributes" className={styles.attributesBox}>
+          <div className={styles.attributesGrid}>
+            <AttributeCircle name="Strength" />
+            <AttributeCircle name="Dexterity" />
+            <AttributeCircle name="Constitution" />
+            <AttributeCircle name="Intelligence" />
+            <AttributeCircle name="Wisdom" />
+            <AttributeCircle name="Charisma" />
+          </div>
+        </SheetBox>
+      </div>
+
+      <div className={styles.info}>
+        <SheetBox title="Character Info" className={styles.infoBox}>
+          <SheetFormGrid>
+            <SheetField label="Name" htmlFor="character-name">
+              <input id="character-name" placeholder="Nome do personagem" maxLength={30} />
+            </SheetField>
+            <SheetField label="Class" htmlFor="character-class">
+              <input id="character-class" placeholder="Classe" maxLength={30} />
+            </SheetField>
+            <SheetField label="Age" htmlFor="character-age">
+              <input id="character-age" placeholder="Idade" maxLength={30} />
+            </SheetField>
+            <SheetField label="Race" htmlFor="character-race">
+              <input id="character-race" placeholder="Raça" maxLength={30} />
+            </SheetField>
+            <SheetField label="Background" htmlFor="character-background" wide>
+              <textarea id="character-background" placeholder="Descreva sua história" maxLength={30} />
+            </SheetField>
+          </SheetFormGrid>
+        </SheetBox>
+      </div>
+
+      <div className={styles.combat}>
+        <SheetBox title="Combat" className={styles.combatBox}>
+          <SheetFormGrid>
+            <SheetField label="HP" htmlFor="combat-hp">
+              <NumericInput id="combat-hp" placeholder="Pontos de vida" />
+            </SheetField>
+            <SheetField label="AC" htmlFor="combat-ac">
+              <NumericInput id="combat-ac" placeholder="Classe de armadura" />
+            </SheetField>
+            <SheetField label="Initiative" htmlFor="combat-initiative">
+              <NumericInput id="combat-initiative" placeholder="Iniciativa" />
+            </SheetField>
+            <SheetField label="Speed" htmlFor="combat-speed">
+              <NumericInput id="combat-speed" placeholder="Velocidade" />
+            </SheetField>
+            <SheetField label="Weapons & Attacks" htmlFor="combat-weapons" wide>
+              <textarea id="combat-weapons" placeholder="Liste armas e ataques" maxLength={30} />
+            </SheetField>
+          </SheetFormGrid>
+        </SheetBox>
+      </div>
+
+      <div className={styles.personality}>
+        <SheetBox title="Personality" className={styles.personalityBox}>
+          <SheetFormGrid>
+            <SheetField label="Traits" htmlFor="personality-traits" wide>
+              <textarea id="personality-traits" placeholder="Traços de personalidade" maxLength={30} />
+            </SheetField>
+            <SheetField label="Ideals" htmlFor="personality-ideals" wide>
+              <textarea id="personality-ideals" placeholder="Ideais" maxLength={30} />
+            </SheetField>
+            <SheetField label="Bonds" htmlFor="personality-bonds" wide>
+              <textarea id="personality-bonds" placeholder="Vínculos" maxLength={30} />
+            </SheetField>
+          </SheetFormGrid>
+        </SheetBox>
+      </div>
+
+      <div className={styles.skills}>
+        <SheetBox title="Skills" className={styles.skillsBox}>
+          <SheetFormGrid>
+            <SheetField label="Skills & Proficiencies" htmlFor="skills-list" wide>
+              <textarea id="skills-list" placeholder="Liste suas habilidades" maxLength={30} />
+            </SheetField>
+          </SheetFormGrid>
+        </SheetBox>
+      </div>
+
+      <div className={styles.features}>
+        <SheetBox title="Features & Traits" className={styles.featuresBox}>
+          <SheetFormGrid>
+            <SheetField label="Features" htmlFor="features-notes" wide>
+              <textarea id="features-notes" placeholder="Anote características especiais" maxLength={30} />
+            </SheetField>
+          </SheetFormGrid>
+        </SheetBox>
+      </div>
+    </main>
+  );
+}
