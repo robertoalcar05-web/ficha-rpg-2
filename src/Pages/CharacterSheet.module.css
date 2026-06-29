@@ -1,11 +1,19 @@
 .sheet {
+  position: relative;
+
   width: 1200px;
 
   margin: 20px auto;
 
   padding: 20px;
 
-  background: #f5f5f5;
+  background: #000;
+
+  color: #00ccff;
+
+  box-shadow:
+    0 0 24px rgba(0, 204, 255, 0.18),
+    inset 0 0 80px rgba(0, 204, 255, 0.03);
 
   display: grid;
 
@@ -19,6 +27,42 @@
     "skills features";
 
   gap: 15px;
+
+  overflow: hidden;
+}
+
+.sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 204, 255, 0.03) 2px,
+      rgba(0, 204, 255, 0.03) 3px
+    ),
+    radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(0, 0, 0, 0.45) 100%
+    );
+  opacity: 0.85;
+  animation: sheet-crt-flicker 6s steps(1, end) infinite;
+}
+
+.sheet > * {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes sheet-crt-flicker {
+  0%, 96%, 100% { opacity: 0.85; }
+  97% { opacity: 0.78; }
+  98% { opacity: 0.9; }
 }
 
 .attributesGrid {
@@ -56,8 +100,64 @@
   grid-area: features;
 }
 
-.headerBox {
+.header .headerBox {
   min-height: 120px;
+  background: linear-gradient(145deg, #0a0e17 0%, #121a2e 45%, #0d1525 100%);
+  border-color: #00f0ff;
+  box-shadow:
+    0 0 20px rgba(0, 240, 255, 0.15),
+    0 0 40px rgba(255, 42, 109, 0.08),
+    inset 0 0 30px rgba(0, 240, 255, 0.04);
+  animation: header-border-pulse 4s ease-in-out infinite;
+  transition: box-shadow 0.35s ease, transform 0.35s ease;
+}
+
+.header .headerBox > div {
+  min-height: auto;
+  gap: 0;
+}
+
+@keyframes header-border-pulse {
+  0%, 100% {
+    box-shadow:
+      0 0 20px rgba(0, 240, 255, 0.15),
+      0 0 40px rgba(255, 42, 109, 0.08),
+      inset 0 0 30px rgba(0, 240, 255, 0.04);
+  }
+
+  50% {
+    box-shadow:
+      0 0 28px rgba(0, 240, 255, 0.28),
+      0 0 50px rgba(255, 42, 109, 0.14),
+      inset 0 0 40px rgba(189, 0, 255, 0.06);
+  }
+}
+
+@media (hover: hover) {
+  .header .headerBox:hover {
+    transform: translateY(-1px);
+    box-shadow:
+      0 0 35px rgba(0, 240, 255, 0.35),
+      0 0 60px rgba(255, 42, 109, 0.2),
+      inset 0 0 50px rgba(0, 240, 255, 0.08);
+  }
+}
+
+@media (max-width: 768px) {
+  .header .headerBox {
+    min-height: auto;
+    animation-duration: 5s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .header .headerBox {
+    animation: none;
+  }
+
+  .sheet::before {
+    animation: none;
+  }
 }
 
 .attributesBox {
@@ -82,24 +182,6 @@
 
 .combatBox {
   min-height: 250px;
-}
-
-.licenseHeader {
-  text-align: center;
-}
-
-.licenseHeader h1 {
-  font-size: 3rem;
-
-  margin-bottom: 5px;
-
-  font-weight: 900;
-}
-
-.licenseHeader h2 {
-  font-size: 1rem;
-
-  letter-spacing: 3px;
 }
 
 @media (max-width: 768px) {
@@ -127,15 +209,6 @@
 
   .attributesBox {
     min-height: auto;
-  }
-
-  .licenseHeader h1 {
-    font-size: clamp(1.8rem, 9vw, 2.6rem);
-  }
-
-  .licenseHeader h2 {
-    font-size: 0.82rem;
-    letter-spacing: 2px;
   }
 }
 

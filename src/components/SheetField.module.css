@@ -13,17 +13,27 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
+  color: var(--terminal-fg, inherit);
+  text-shadow: var(--terminal-label-glow, none);
+  font-family: var(--terminal-font, inherit);
 }
 
 .field input,
 .field textarea {
   width: 100%;
-  border: 2px solid #111;
-  background: #fff;
+  border: 1px solid var(--terminal-input-border, #111);
+  background: var(--terminal-input-bg, #fff);
   padding: 8px 10px;
   font: inherit;
   box-sizing: border-box;
-  color: #111;
+  color: var(--terminal-input-fg, #111);
+  font-family: "DS-Digital", "Courier New", monospace;
+  text-shadow: var(--terminal-input-glow, none);
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+  color: var(--terminal-fg-dim, rgba(0, 0, 0, 0.4));
 }
 
 .field textarea {
@@ -34,5 +44,6 @@
 .field input:focus,
 .field textarea:focus {
   outline: none;
-  border-color: #0f6bff;
+  border-color: var(--terminal-focus-border, #0f6bff);
+  box-shadow: var(--terminal-focus-glow, none);
 }
